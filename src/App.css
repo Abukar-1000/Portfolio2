@@ -1,3 +1,12 @@
+:root {
+  --col-purp-100: "#e1bee7";
+  --col-purp-200: "#ce93d8";
+  --col-purp-300: "#ba68c8";
+  --col-purp-400: "#ab47bc";
+  --col-purp-500: "#9c27b0";
+  --col-purp-600: "#8e24aa";
+}
+
 .App {
   text-align: center;
 }
@@ -24,9 +33,51 @@
   color: white;
 }
 
+@keyframes animateBgGradient {
+  0% {
+    background-position: 45deg 10deg;
+  }
+  
+  100% {
+    background-position: 180deg 40deg;
+  }
+}
+
+.rotateBgGradient {
+
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+
+  background-image: -webkit-linear-gradient(
+    45deg,
+  #ec407a,
+  #ab47bc,
+  #9c27b0,
+  #8e24aa
+  );
+
+  animation: animateBgGradient .2 ease-in-out infinite linear;
+  animation-play-state: running;
+}
+
+
+
+
+@keyframes AnimateTextGradient {
+  from {
+    transform: rotate(0deg);    
+  }
+  to {
+    transform: rotate(760deg);
+  }
+}
+
+
 .App-link {
   color: #61dafb;
 }
+
+
 
 @keyframes App-logo-spin {
   from {

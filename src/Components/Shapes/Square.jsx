@@ -1,0 +1,12 @@
+import './Shapes.css'
+
+export function Square({}) {
+
+    return (
+        <div class="loader">
+            <svg viewBox="0 0 80 80">
+                <rect x="8" y="8" width="64" height="64"></rect>
+            </svg>
+        </div>
+    );
+}
