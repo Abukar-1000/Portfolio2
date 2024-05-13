@@ -10,6 +10,7 @@ import { Triangle } from './Components/Shapes/Triangle';
 import { IntroPage } from './IntroPage';
 import { CustomCard } from './Components/CustomCard';
 import { AcademicInfo } from './Components/AcademicInfo';
+import { Course } from './Components/CourseComponents/Course';
 
 function App() {
   return (
