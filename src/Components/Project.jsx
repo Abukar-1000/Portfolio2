@@ -10,7 +10,7 @@ import { red, pink, lime } from '@mui/material/colors';
 import { createTheme, alpha, getContrastRatio } from '@mui/material/styles';
 import { ThemeProvider } from "@emotion/react";
 
-export function Project({myTitle, action}) {
+export function Project({ myTitle, action }) {
 
     let [state, setState] = useState({
         elevation: 4
@@ -22,6 +22,11 @@ export function Project({myTitle, action}) {
                 elevation: prev.elevation === 24? 4 : 24,
             }
         });   
+    }
+
+    const changePg = () => {
+        let route = `/Project/${myTitle}`;
+        window.location = route;
     }
 
     const violetBase = '#7F00FF';
@@ -39,7 +44,11 @@ export function Project({myTitle, action}) {
     });
     
     return (
-        <Button onMouseEnter={hoverStateEffects} onMouseLeave={hoverStateEffects} disableRipple={true} >
+        <Button 
+            onMouseEnter={hoverStateEffects} 
+            onMouseLeave={hoverStateEffects} 
+            onClick={changePg}
+            disableRipple={true} >
             <Paper 
                 elevation={state.elevation}
                 sx={{ 

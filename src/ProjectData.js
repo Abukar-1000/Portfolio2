@@ -7,7 +7,7 @@ export const allProjectData = [
         field:"Computer Vision",
         projects: <>
         <ProjectContainer>
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
+            <Project myTitle = {"Image Segmentation"} action={"view"}/>
             <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
             <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
         </ProjectContainer>

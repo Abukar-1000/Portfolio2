@@ -167,3 +167,54 @@ function MobileTabContainer({content}) {
     </Box>
   );
 }
+
+/**
+ * 
+ * @param {Object} tabData 
+ * @returns {Prop}
+ * 
+ * The keys of tabData are the tabs 
+ * The data hashed at the key is what is in the tab pannel
+ */
+export function GeneralTabs({ tabData, children, getCurrentValue, hidePannel }) {
+    let [value, setValue] = useState(0);
+    
+    const handleChange = (event, newValue) => {
+        getCurrentValue(newValue);
+        setValue(newValue);
+    }
+
+    const tabOptions = Object.keys(tabData).map( (key, index) => {
+        return <Tab label={key} {...a11yProps(index)} />
+    })
+
+    let tabPannels = Object.keys(tabData).map( (key, index) => {
+        return <>
+            <TabPanel value={index} index={index}>
+                {tabData[key]}
+            </TabPanel>
+        </>
+    })
+
+    if (hidePannel) {
+        tabPannels = children;
+    }
+
+    return (<>
+        <Box>
+            <Box>
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    textColor="secondary"
+                    indicatorColor="secondary"
+                    aria-label="secondary tabs"
+                    orientation='vertical'
+                >
+                    {tabOptions}
+                </Tabs>
+                {tabPannels}
+            </Box>
+        </Box>
+    </>)
+}
