@@ -18,7 +18,7 @@ export function ImgSlide({ imgData, status }) {
     let slide = <>
         <Fade
             in={true}
-            timeout={750}
+            timeout={1000}
             unmountOnExit
         >
             <Box>
