@@ -2,6 +2,7 @@ import { Badge, Box, Chip, Divider, Paper, Typography } from "@mui/material";
 import DoneIcon from '@mui/icons-material/Done';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import useCarousel from "../CustomHooks/useCarousel";
+import { useEffect, useState } from "react";
 
 export function ImgSlide({ imgData, status }) {
 
@@ -42,6 +43,17 @@ export function Carousel({ title, items, elevation, interval }) {
 
     let item = useCarousel(items, interval);
 
+    let [count, setCount] = useState(0)
+
+    useEffect(() => {
+        let id = setInterval(() => {
+            setCount(++count);
+            console.log(`[[ interval: ${id}, Count: ${count} ]]`);
+        }, 1000)
+
+        return () => { clearInterval(id) }
+    }, [count])
+
     return (<>
         <Paper
             elevation={elevation}
@@ -59,6 +71,8 @@ export function Carousel({ title, items, elevation, interval }) {
                     {item}
                 </Box>
             </Box>
+
+            <Typography variant="h6">Count: {count} </Typography>
         </Paper>
     </>)
 }
