@@ -54,7 +54,7 @@ export function Carousel({ title, items, elevation, interval }) {
 
     let [currentState, setCurrentState] = useState({
         index: 0,
-        value: items[0]
+        items: items
     });
     
     useEffect(() => {
@@ -64,14 +64,14 @@ export function Carousel({ title, items, elevation, interval }) {
             setCurrentState(prevState => {
                 let nextIndex = prevState.index++ % items.length;
                 return {
+                    ...prevState,
                     index: nextIndex,
-                    value: items[nextIndex]
                 };
             })
         }, interval)
 
         return () => { clearInterval(intervalId); }
-    }, [currentState.value]);
+    }, [currentState.index]);
 
     return (<>
         <Paper
@@ -87,7 +87,7 @@ export function Carousel({ title, items, elevation, interval }) {
                 </Box>
                 <Divider />
                 <Box>
-                    {currentState.value}
+                    {currentState.items[currentState.index]}
                 </Box>
             </Box>
 
