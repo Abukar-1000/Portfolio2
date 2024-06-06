@@ -27,7 +27,7 @@ export default function useCarousel(dataArray, interval){
         let intervalId = setInterval(() => {
             
             setCurrentState(prevState => {
-                let nextIndex = prevState.index++ % dataArray.length;
+                let nextIndex = currentState.index++ % dataArray.length;
                 return {
                     index: nextIndex,
                     value: dataArray[nextIndex]
@@ -36,7 +36,7 @@ export default function useCarousel(dataArray, interval){
         }, interval)
 
         return () => { clearInterval(intervalId); }
-    }, [currentState.value]);
+    }, [currentState.value, dataArray, interval]);
     
     return currentState.value;
 }

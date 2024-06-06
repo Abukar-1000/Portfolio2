@@ -43,39 +43,41 @@ export function ImgSlide({ imgData, status }) {
 
 export function Carousel({ title, items, elevation, interval }) {
 
-    let noDataWasProvided = items.length < 1    ||
-                            items === undefined ||
-                            items === null;
+    // let noDataWasProvided = items.length < 1    ||
+    //                         items === undefined ||
+    //                         items === null;
     
     
-    if (noDataWasProvided) {
-        throw Error("Carousel data is empty.");
-    }
+    // if (noDataWasProvided) {
+    //     throw Error("Carousel data is empty.");
+    // }
 
-    let [currentState, setCurrentState] = useState({
-        index: 0,
-        value: items[0],
-        items: items
-    });
+    // let [currentState, setCurrentState] = useState({
+    //     index: 0,
+    //     value: items[0],
+    //     items: items
+    // });
     
-    useEffect(() => {
-        let intervalId = setInterval(() => {
+    // useEffect(() => {
+    //     let intervalId = setInterval(() => {
             
-            setCurrentState(prevState => {
-                console.log("Curr: ", currentState);
-                let nextIndex = currentState.index + 1;
-                nextIndex = nextIndex % items.length;
+    //         setCurrentState(prevState => {
+    //             console.log("Curr: ", currentState);
+    //             let nextIndex = currentState.index + 1;
+    //             nextIndex = nextIndex % items.length;
 
-                return {
-                    items: items,
-                    value: items[nextIndex],
-                    index: nextIndex,
-                };
-            })
-        }, interval)
+    //             return {
+    //                 items: items,
+    //                 value: items[nextIndex],
+    //                 index: nextIndex,
+    //             };
+    //         })
+    //     }, interval)
 
-        return () => { clearInterval(intervalId); }
-    }, [currentState.value, items, interval]);
+    //     return () => { clearInterval(intervalId); }
+    // }, [currentState.value, items, interval]);
+
+    let item = useCarousel(items, interval);
 
     return (<>
         <Paper
@@ -91,7 +93,7 @@ export function Carousel({ title, items, elevation, interval }) {
                 </Box>
                 <Divider />
                 <Box>
-                    {currentState.value}
+                    {item}
                 </Box>
             </Box>
 
