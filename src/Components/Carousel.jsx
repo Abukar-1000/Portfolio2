@@ -61,11 +61,11 @@ export function Carousel({ title, items, elevation, interval }) {
     useEffect(() => {
         let intervalId = setInterval(() => {
             
-            console.log("Curr: ", currentState);
             setCurrentState(prevState => {
+                console.log("Curr: ", currentState);
                 let nextIndex = prevState.index++;
                 nextIndex = nextIndex % items.length;
-                
+
                 return {
                     ...prevState,
                     value: items[nextIndex],
