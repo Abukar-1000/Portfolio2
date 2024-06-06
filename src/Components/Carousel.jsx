@@ -14,31 +14,45 @@ export function ImgSlide({ imgData, status }) {
     if (status === undefined) {
         chip = <></>
     }
-    
+
+    let slide = <>
+        <Fade
+            in={true}
+            timeout={750}
+            unmountOnExit
+        >
+            <Box>
+
+                <Box
+                    marginTop={"2vh"}
+                    width={"95%"}                
+                >
+                    <Box
+                        display={"flex"}
+                        justifyContent={"end"}
+                        alignContent={"end"}
+                    >
+                        {chip}
+                    </Box>
+                </Box>
+
+                <Box
+                    display={"flex"}
+                    alignContent={"center"}
+                    justifyContent={"center"}
+                >
+                    <img src={imgData.location}/>
+                </Box>
+
+            </Box>
+        </Fade>
+    </>
+
     return (<>
         <Box
             position={"relative"}
         >
-            <Box
-                marginTop={"2vh"}
-                width={"95%"}                
-            >
-                <Box
-                    display={"flex"}
-                    justifyContent={"end"}
-                    alignContent={"end"}
-                >
-                    {chip}
-                </Box>
-            </Box>
-
-            <Box
-                display={"flex"}
-                alignContent={"center"}
-                justifyContent={"center"}
-            >
-                <img src={imgData.location}/>
-            </Box>
+            {slide}
         </Box>
     </>)
 }
