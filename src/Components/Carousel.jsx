@@ -1,8 +1,8 @@
-import { Badge, Box, Chip, Divider, Paper, Typography } from "@mui/material";
+import { Badge, Box, Button, Chip, Container, Divider, Fade, Link, Paper, Typography } from "@mui/material";
 import DoneIcon from '@mui/icons-material/Done';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import useCarousel from "../CustomHooks/useCarousel";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function ImgSlide({ imgData, status }) {
 
@@ -40,45 +40,10 @@ export function ImgSlide({ imgData, status }) {
 }
 
 
-
 export function Carousel({ title, items, elevation, interval }) {
-
-    // let noDataWasProvided = items.length < 1    ||
-    //                         items === undefined ||
-    //                         items === null;
     
-    
-    // if (noDataWasProvided) {
-    //     throw Error("Carousel data is empty.");
-    // }
-
-    // let [currentState, setCurrentState] = useState({
-    //     index: 0,
-    //     value: items[0],
-    //     items: items
-    // });
-    
-    // useEffect(() => {
-    //     let intervalId = setInterval(() => {
-            
-    //         setCurrentState(prevState => {
-    //             console.log("Curr: ", currentState);
-    //             let nextIndex = currentState.index + 1;
-    //             nextIndex = nextIndex % items.length;
-
-    //             return {
-    //                 items: items,
-    //                 value: items[nextIndex],
-    //                 index: nextIndex,
-    //             };
-    //         })
-    //     }, interval)
-
-    //     return () => { clearInterval(intervalId); }
-    // }, [currentState.value, items, interval]);
-
     let item = useCarousel(items, interval);
-
+    
     return (<>
         <Paper
             elevation={elevation}
@@ -98,5 +63,75 @@ export function Carousel({ title, items, elevation, interval }) {
             </Box>
 
         </Paper>
+    </>)
+}
+export function HiddenContent({ children, messages, btnText, interval, elevation }) {
+
+    let message = useCarousel(messages, interval)
+    let [ state, setState ] = useState({
+        item: <></>,
+        isVisible: false
+    });
+    
+    let codeSectionRef = useRef(null);
+
+    let child = <>
+        <Fade
+            in={true}
+            timeout={1000}
+            unmountOnExit
+        >
+            <Box>
+                {children}
+            </Box>
+        </Fade>
+    </>
+
+    const handleVisibility = () => {
+        codeSectionRef.current.focus();
+        setState({
+            item: child,
+            isVisible: true
+        });
+    }
+
+    let dialog = <>
+        <Paper
+                elevation={elevation}
+                >
+                <Box
+                    minHeight={"300px"}
+                    display={"flex"}
+                    alignItems={"center"}
+                    justifyContent={"center"}
+                    >
+                    
+                        <Box
+                            display={"flex"}
+                            flexDirection={"column"}
+                            gap={"1rem"}
+                            width={"60%"}
+                        >
+                            <Typography variant="h6" fontWeight={"100"} textAlign={"center"}>{message}</Typography>
+                            <Button variant="text" color="secondary" onClick={handleVisibility}>{btnText}</Button>
+                        </Box>
+                </Box>
+            </Paper>
+    </>
+
+
+    if (state.isVisible) {
+        dialog = <></>;
+    }
+
+    console.log("Visible: ", state.isVisible, state.item);
+
+    return (<>        
+            <Box
+                ref={codeSectionRef}
+            >
+                {dialog}                
+                {state.item}
+            </Box>
     </>)
 }

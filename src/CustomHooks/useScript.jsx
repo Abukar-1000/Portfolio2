@@ -9,15 +9,20 @@ export default function useScript(src, targetElementClass){
     // let [url, setUrl] = useState(src);
     useEffect(() => {
 
-        const scriptElement = document.createElement("script");
-        const parentElement = document.querySelector(targetElementClass);
+        try {
+            const scriptElement = document.createElement("script");
+            const parentElement = document.querySelector(targetElementClass);
+            scriptElement.src = src;
+            scriptElement.async = true;
+            parentElement.appendChild(scriptElement);
 
-        scriptElement.src = src;
-        scriptElement.async = true;
-        parentElement.appendChild(scriptElement);
-
-        return () => {
-            parentElement.removeChild(scriptElement);
+            return () => {
+                parentElement.removeChild(scriptElement);
+            }
+        } catch (err) {
+            // handle later
+            
         }
+
     }, [src]);
 }

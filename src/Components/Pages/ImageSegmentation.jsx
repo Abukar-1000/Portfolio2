@@ -1,6 +1,6 @@
 import useAsyncRequest from "../../CustomHooks/useAsyncRequest"
 import { supabase } from "../../router"
-import { Carousel, ImgSlide } from "../Carousel"
+import { Carousel, HiddenContent, ImgSlide } from "../Carousel"
 import { Page } from "../Page"
 import { LanguageBar, ProjectSourceCode, ProjectText, ProjectTitle } from "../ProjectPage"
 
@@ -45,10 +45,23 @@ export function ImageSegmentation(){
             <ProjectTitle title={projectData.name} />
             <LanguageBar languages={projectData.langs}/>
             <ProjectText text={projectData.abstract[0]} title={"Overview:"}/>
-            <Carousel items={results} title={"Results"} elevation={4} interval={1000} />
+            <Carousel items={results} title={"Results"} elevation={4} interval={3000} />
             <ProjectText text={projectData.paragraphs[0].paragraph} title={"Observations:"}/>
             <Carousel items={[fixedSlide]} title={"Results"} elevation={4} interval={oneHr} />
-            {/* <ProjectSourceCode elevation={4} sourceFiles={sourceFiles}/> */}
+            
+            <HiddenContent
+                messages={[
+                    "View source",
+                    "Display source code",
+                    "See implementation"
+                ]}
+
+                btnText={"Show"}
+                interval={3000}
+                elevation={4}
+            >
+                <ProjectSourceCode elevation={4} sourceFiles={sourceFiles}/>
+            </HiddenContent>
         </Page>
     }
     return (<>
