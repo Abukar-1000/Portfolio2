@@ -38,15 +38,16 @@ export function ImageSegmentation(){
         })[0];
         let fixedSlide = <ImgSlide key={1} imgData={fixedKeys} status={"pass"} />;
         let sourceFiles = projectData.files;
+        const oneHr = 3600 * 1000;
         console.log(response);
 
         body = <Page>
             <ProjectTitle title={projectData.name} />
             <LanguageBar languages={projectData.langs}/>
             <ProjectText text={projectData.abstract[0]} title={"Overview:"}/>
-            <Carousel items={results} title={"Results"} elevation={4} interval={4000} />
+            <Carousel items={results} title={"Results"} elevation={4} interval={1000} />
             <ProjectText text={projectData.paragraphs[0].paragraph} title={"Observations:"}/>
-            {/* <Carousel items={[fixedSlide]} title={"Results"} elevation={4} interval={1000} /> */}
+            <Carousel items={[fixedSlide]} title={"Results"} elevation={4} interval={oneHr} />
             <ProjectSourceCode elevation={4} sourceFiles={sourceFiles}/>
         </Page>
     }
