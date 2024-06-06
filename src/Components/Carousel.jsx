@@ -63,11 +63,11 @@ export function Carousel({ title, items, elevation, interval }) {
             
             setCurrentState(prevState => {
                 console.log("Curr: ", currentState);
-                let nextIndex = prevState.index++;
+                let nextIndex = currentState.index + 1;
                 nextIndex = nextIndex % items.length;
 
                 return {
-                    ...prevState,
+                    items: items,
                     value: items[nextIndex],
                     index: nextIndex,
                 };
