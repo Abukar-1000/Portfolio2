@@ -46,7 +46,7 @@ export function ImageSegmentation(){
             <ProjectText text={projectData.abstract[0]} title={"Overview:"}/>
             <Carousel items={results} title={"Results"} elevation={4} interval={4000} />
             <ProjectText text={projectData.paragraphs[0].paragraph} title={"Observations:"}/>
-            <Carousel items={[fixedSlide]} title={"Results"} elevation={4} interval={4000} />
+            {/* <Carousel items={[fixedSlide]} title={"Results"} elevation={4} interval={1000} /> */}
             <ProjectSourceCode elevation={4} sourceFiles={sourceFiles}/>
         </Page>
     }
