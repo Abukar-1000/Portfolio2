@@ -54,6 +54,7 @@ export function Carousel({ title, items, elevation, interval }) {
 
     let [currentState, setCurrentState] = useState({
         index: 0,
+        value: items[0],
         items: items
     });
     
@@ -65,13 +66,14 @@ export function Carousel({ title, items, elevation, interval }) {
                 let nextIndex = prevState.index++ % items.length;
                 return {
                     ...prevState,
+                    value: items[nextIndex],
                     index: nextIndex,
                 };
             })
         }, interval)
 
         return () => { clearInterval(intervalId); }
-    }, [currentState.index]);
+    }, [currentState.value, items, interval]);
 
     return (<>
         <Paper
@@ -87,7 +89,7 @@ export function Carousel({ title, items, elevation, interval }) {
                 </Box>
                 <Divider />
                 <Box>
-                    {currentState.items[currentState.index]}
+                    {currentState.value}
                 </Box>
             </Box>
 
