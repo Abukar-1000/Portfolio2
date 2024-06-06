@@ -36,7 +36,7 @@ export default function useCarousel(dataArray, interval){
         }, interval)
 
         console.log(`[ Inteval ${intervalId}, delay ${interval} ]`);
-        return () => { clearInterval(intervalId); }
+        // return () => { clearInterval(intervalId); }
     }, [currentState.value]);
     
     return currentState.value;
