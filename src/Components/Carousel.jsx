@@ -11,6 +11,10 @@ export function ImgSlide({ imgData, status }) {
         chip = <Chip key = {2} label="fail" color="error" variant="outlined" icon={ <ErrorOutlineIcon/> }/>
     }
 
+    if (status === undefined) {
+        chip = <></>
+    }
+    
     return (<>
         <Box
             position={"relative"}
@@ -123,8 +127,6 @@ export function HiddenContent({ children, messages, btnText, interval, elevation
     if (state.isVisible) {
         dialog = <></>;
     }
-
-    console.log("Visible: ", state.isVisible, state.item);
 
     return (<>        
             <Box

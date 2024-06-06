@@ -9,7 +9,9 @@ export const allProjectData = [
         <ProjectContainer>
             <Project myTitle = {"Image Segmentation"} action={"view"}/>
             <Project myTitle = {"Connected Components"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
+            <Project myTitle = {"Geo-Feature Computation"} action={"view"} />
+            <Project myTitle = {"Corner Detection"} action={"view"} />
+            <Project myTitle = {"Edge Detection"} action={"view"} />
         </ProjectContainer>
         </>
     },
