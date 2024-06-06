@@ -39,20 +39,38 @@ export function ImgSlide({ imgData, status }) {
     </>)
 }
 
+
+
 export function Carousel({ title, items, elevation, interval }) {
 
-    let item = useCarousel(items, interval);
+    let noDataWasProvided = items.length < 1    ||
+                            items === undefined ||
+                            items === null;
+    
+    
+    if (noDataWasProvided) {
+        throw Error("Carousel data is empty.");
+    }
 
-    let [count, setCount] = useState(0)
-
+    let [currentState, setCurrentState] = useState({
+        index: 0,
+        value: items[0]
+    });
+    
     useEffect(() => {
-        let id = setInterval(() => {
-            setCount(++count);
-            console.log(`[[ interval: ${id}, Count: ${count} ]]`);
-        }, 1000)
+        let intervalId = setInterval(() => {
+            
+            setCurrentState(prevState => {
+                let nextIndex = prevState.index++ % items.length;
+                return {
+                    index: nextIndex,
+                    value: items[nextIndex]
+                };
+            })
+        }, interval)
 
-        return () => { clearInterval(id) }
-    }, [count])
+        return () => { clearInterval(intervalId); }
+    }, [currentState.value]);
 
     return (<>
         <Paper
@@ -68,11 +86,10 @@ export function Carousel({ title, items, elevation, interval }) {
                 </Box>
                 <Divider />
                 <Box>
-                    {item}
+                    {currentState.value}
                 </Box>
             </Box>
 
-            <Typography variant="h6">Count: {count} </Typography>
         </Paper>
     </>)
 }
