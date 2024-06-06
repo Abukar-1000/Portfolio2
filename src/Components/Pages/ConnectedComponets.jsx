@@ -4,12 +4,12 @@ import { Carousel, HiddenContent, ImgSlide } from "../Carousel"
 import { Page } from "../Page"
 import { LanguageBar, ProjectSourceCode, ProjectText, ProjectTitle } from "../ProjectPage"
 
-export function ImageSegmentation(){
+export function ConnectedComponets() {
 
     let response = useAsyncRequest( async setResponse => {
         let { data, error } = await supabase
         .rpc('get_project_data', {
-            project_name: "Image Segmentation"
+            project_name: "Connected Components"
         })
 
         if (error) console.error(error)
@@ -20,12 +20,12 @@ export function ImageSegmentation(){
             error: error
         });
     });
-    
+
     let body = null;
     if (response !== null) {
         let projectData = response.data[0];
         let results = projectData.imgs.map((imgData, index ) => {
-            let isResultImg = index < 10 && imgData.name !== "keys2";
+            let isResultImg = imgData.name !== "pillsect2CompAnalysis";
             if (isResultImg) {
                 return <ImgSlide key = {index} imgData={imgData} status={"pass"} />
             }
@@ -34,8 +34,9 @@ export function ImageSegmentation(){
         });
 
         let fixedKeys = projectData.imgs.filter(imgData => {
-            return imgData.name === "keys2";
+            return imgData.name === "pillsect2CompAnalysis";
         })[0];
+
         let fixedSlide = <ImgSlide key={1} imgData={fixedKeys} status={"pass"} />;
         let sourceFiles = projectData.files;
         const oneHr = 3600 * 1000;

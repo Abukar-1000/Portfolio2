@@ -8,7 +8,7 @@ export const allProjectData = [
         projects: <>
         <ProjectContainer>
             <Project myTitle = {"Image Segmentation"} action={"view"}/>
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
+            <Project myTitle = {"Connected Components"} action={"view"} />
             <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
         </ProjectContainer>
         </>

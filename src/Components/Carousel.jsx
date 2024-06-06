@@ -112,7 +112,7 @@ export function HiddenContent({ children, messages, btnText, interval, elevation
                             gap={"1rem"}
                             width={"60%"}
                         >
-                            <Typography variant="h6" fontWeight={"100"} textAlign={"center"}>{message}</Typography>
+                            <Typography variant="h6" fontWeight={"100"} textAlign={"center"} >{message}</Typography>
                             <Button variant="text" color="secondary" onClick={handleVisibility}>{btnText}</Button>
                         </Box>
                 </Box>

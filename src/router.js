@@ -8,6 +8,7 @@ import App from "./App";
 import { ProjectPage } from "./Components/ProjectPage";
 import { createClient } from '@supabase/supabase-js'
 import { ImageSegmentation } from "./Components/Pages/ImageSegmentation";
+import { ConnectedComponets } from "./Components/Pages/ConnectedComponets";
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL
 const supabaseKey = process.env.REACT_APP_SUPABASE_KEY
@@ -22,6 +23,11 @@ export const router = createBrowserRouter([
     {
         path: "/Project/Image Segmentation",
         element: <ImageSegmentation />
+    },
+
+    {
+      path: "/Project/Connected Components",
+      element: <ConnectedComponets />
     }
   ]);
 
