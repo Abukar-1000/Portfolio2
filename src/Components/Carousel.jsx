@@ -40,8 +40,6 @@ export function ImgSlide({ imgData, parentRef, ImgText, status }) {
         parentRef = {
             current: null
         }
-    } else {
-        imgComponent = <img ref={imgRef} width={state.width} height={state.height} src={imgData.location}/>;
     }
 
 
@@ -49,15 +47,16 @@ export function ImgSlide({ imgData, parentRef, ImgText, status }) {
     useEffect(() => {
         // console.log("parent ref:", parentRef.current);
         if (!parentRefNotProvided) {
-            let heightRatio = imgRef.current.clientHeight / imgRef.current.clientWidth;
-            let newHeight = Math.ceil(parentRef.current.clientHeight * heightRatio);
-            newHeight += Math.ceil( parentRef.current.clientHeight * (heightRatio - newHeight / parentRef.current.clientWidth) );
-    
-            changeState({
-                width: parentRef.current.clientWidth,
-                height: newHeight
-            })
-            console.log("img ref:", newHeight, heightRatio, newHeight / parentRef.current.clientWidth, "diff:", heightRatio - newHeight / parentRef.current.clientWidth);
+            if (imgRef.current.clientWidth > parentRef.current.clientWidth) {
+                let heightRatio = imgRef.current.clientHeight / imgRef.current.clientWidth;
+                let newHeight = Math.ceil(parentRef.current.clientHeight * heightRatio);
+                newHeight += Math.ceil( parentRef.current.clientHeight * (heightRatio - newHeight / parentRef.current.clientWidth) );
+        
+                changeState({
+                    width: parentRef.current.clientWidth,
+                    height: newHeight
+                })
+            }
         }
 
     }, [parentRef.current])

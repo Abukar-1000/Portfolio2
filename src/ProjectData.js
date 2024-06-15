@@ -12,6 +12,7 @@ export const allProjectData = [
             <Project myTitle = {"Geo-Feature Computation"} action={"view"} />
             <Project myTitle = {"Corner Detection"} action={"view"} />
             <Project myTitle = {"Edge Detection"} action={"view"} />
+            <Project myTitle = {"Histogram Equalization"} action={"view"} />
         </ProjectContainer>
         </>
     },

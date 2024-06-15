@@ -12,6 +12,7 @@ import { ConnectedComponets } from "./Components/Pages/ConnectedComponets";
 import { GeometricFeatureComputation } from "./Components/Pages/GeometricFeatureComputation";
 import { CornerDetection } from "./Components/Pages/CornerDetection";
 import { EdgeDetection } from "./Components/Pages/EdgeDetection";
+import { HistogramEqualization } from "./Components/Pages/HistogramEqualization";
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL
 const supabaseKey = process.env.REACT_APP_SUPABASE_KEY
@@ -46,6 +47,12 @@ export const router = createBrowserRouter([
     {
       path: "/Project/Edge Detection",
       element: <EdgeDetection />
-    }
+    },
+
+    {
+      path: "/Project/Histogram Equalization",
+      element: <HistogramEqualization />
+    },
+
   ]);
 

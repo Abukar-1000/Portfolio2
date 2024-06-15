@@ -24,7 +24,6 @@ export default function useCarousel(dataArray, interval){
     });
     
     useEffect(() => {
-        console.log(dataArray)
         let intervalId = setInterval(() => {
             
             setCurrentState(prevState => {
