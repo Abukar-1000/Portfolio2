@@ -1,12 +1,29 @@
-import { Badge, Box, Button, Chip, Container, Divider, Fade, Link, Paper, Typography } from "@mui/material";
+import { Badge, Box, Button, Chip, Container, Divider, Fade, Grid, Link, Paper, Typography } from "@mui/material";
 import DoneIcon from '@mui/icons-material/Done';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import useCarousel from "../CustomHooks/useCarousel";
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 
-export function ImgSlide({ imgData, status }) {
+export function ImgSlide({ imgData, parentRef, ImgText, status }) {
+
+    let [ state, changeState ] = useState({
+        width: 500,
+        height: 500
+    })
+
+    let imgText =   <Box
+                        display={"flex"}
+                        alignContent={"center"}
+                        justifyContent={"center"}
+                    >
+                        <Typography variant="subtitle1" fontSize={"1.2rem"}>{ImgText}</Typography>
+                    </Box>;
 
     let chip = <Chip key = {1} label="success" color="success" variant="outlined" icon={<DoneIcon />}/>;
+    let imgRef = useRef(null);
+    let imgComponent = <img ref={imgRef} className="carouselImg" src={imgData.location}/>;
+    let parentRefNotProvided = parentRef === undefined;
+
     if (!imgData.success) {
         chip = <Chip key = {2} label="fail" color="error" variant="outlined" icon={ <ErrorOutlineIcon/> }/>
     }
@@ -15,6 +32,36 @@ export function ImgSlide({ imgData, status }) {
         chip = <></>
     }
 
+    if (ImgText === undefined) {
+        imgText = <></>;
+    }
+
+    if (parentRefNotProvided) {
+        parentRef = {
+            current: null
+        }
+    } else {
+        imgComponent = <img ref={imgRef} width={state.width} height={state.height} src={imgData.location}/>;
+    }
+
+
+
+    useEffect(() => {
+        // console.log("parent ref:", parentRef.current);
+        if (!parentRefNotProvided) {
+            let heightRatio = imgRef.current.clientHeight / imgRef.current.clientWidth;
+            let newHeight = Math.ceil(parentRef.current.clientHeight * heightRatio);
+            newHeight += Math.ceil( parentRef.current.clientHeight * (heightRatio - newHeight / parentRef.current.clientWidth) );
+    
+            changeState({
+                width: parentRef.current.clientWidth,
+                height: newHeight
+            })
+            console.log("img ref:", newHeight, heightRatio, newHeight / parentRef.current.clientWidth, "diff:", heightRatio - newHeight / parentRef.current.clientWidth);
+        }
+
+    }, [parentRef.current])
+    
     let slide = <>
         <Fade
             in={true}
@@ -27,13 +74,24 @@ export function ImgSlide({ imgData, status }) {
                     marginTop={"2vh"}
                     width={"95%"}                
                 >
-                    <Box
-                        display={"flex"}
-                        justifyContent={"end"}
-                        alignContent={"end"}
-                    >
-                        {chip}
-                    </Box>
+                    
+                    <Grid container>
+                        <Grid item xs={12} sm={12} md={10} lg={10} xl={10}>{imgText}</Grid>
+                        
+                        <Grid item xs={12} sm={12} md={2} lg={2} xl={2}>
+                            <Box
+                                display={"flex"}
+                                justifyContent={"end"}
+                                alignContent={"end"}
+                            >
+                                {chip}
+                            </Box>
+                        </Grid>
+
+                    </Grid>
+                    
+                    
+
                 </Box>
 
                 <Box
@@ -41,7 +99,7 @@ export function ImgSlide({ imgData, status }) {
                     alignContent={"center"}
                     justifyContent={"center"}
                 >
-                    <img src={imgData.location}/>
+                    {imgComponent}
                 </Box>
 
             </Box>
@@ -58,7 +116,7 @@ export function ImgSlide({ imgData, status }) {
 }
 
 
-export function Carousel({ title, items, elevation, interval }) {
+export const Carousel = forwardRef(({ title, items, elevation, interval }, ref) => {
     
     let item = useCarousel(items, interval);
     
@@ -75,14 +133,15 @@ export function Carousel({ title, items, elevation, interval }) {
                     <Typography variant="h6" fontWeight={"100"}>{title}</Typography>
                 </Box>
                 <Divider />
-                <Box>
+                <Box ref={ref}>
                     {item}
                 </Box>
             </Box>
 
         </Paper>
     </>)
-}
+});
+
 export function HiddenContent({ children, messages, btnText, interval, elevation }) {
 
     let message = useCarousel(messages, interval)

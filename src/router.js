@@ -11,6 +11,7 @@ import { ImageSegmentation } from "./Components/Pages/ImageSegmentation";
 import { ConnectedComponets } from "./Components/Pages/ConnectedComponets";
 import { GeometricFeatureComputation } from "./Components/Pages/GeometricFeatureComputation";
 import { CornerDetection } from "./Components/Pages/CornerDetection";
+import { EdgeDetection } from "./Components/Pages/EdgeDetection";
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL
 const supabaseKey = process.env.REACT_APP_SUPABASE_KEY
@@ -40,6 +41,11 @@ export const router = createBrowserRouter([
     {
       path: "/Project/Corner Detection",
       element: <CornerDetection />
+    },
+
+    {
+      path: "/Project/Edge Detection",
+      element: <EdgeDetection />
     }
   ]);
 
