@@ -33,6 +33,15 @@ export function JobSection(){
         },
     ]
 
+    const style = isMobile? 
+      {paddingBottom: "2rem"}
+      : {
+          display: "flex",
+          justifyContent: "center",
+          alignContent: "center",
+          paddingBottom: "2rem"
+        }
+        
     return (
       <Grid
         container={isMobile? false: true} 
@@ -47,12 +56,7 @@ export function JobSection(){
           sm: "none",
           md: "1rem"
         }}
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignContent: "center",
-          paddingBottom: "2rem"
-        }}
+        sx={style}
       >
         {jobs.map((jobs, i) => (
             <Grid 
