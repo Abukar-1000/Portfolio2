@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 
 
-export function AnimatedText({Text, componentType, charDelay, AnimateGradient}) {
+export function AnimatedText({Text, componentType, charDelay, AnimateGradient, endAdornment=<></>, useGradient=true}) {
     
 
     let [state, setState] = useState({
@@ -15,7 +15,9 @@ export function AnimatedText({Text, componentType, charDelay, AnimateGradient}) 
         animationComplete: false
     });
 
+    const [finished, setFinished] = useState(false);
 
+    const gradientStyle = useGradient? 'rotateBgGradient' : "";
     useEffect(() => {
 
         let intervalID = setInterval(() => {
@@ -28,7 +30,8 @@ export function AnimatedText({Text, componentType, charDelay, AnimateGradient}) 
                 let isFinished =  newIndex === prev.maxLength;
                 
                 if (isFinished) {
-                    clearInterval(intervalID)
+                    clearInterval(intervalID);
+                    setFinished(true);
                 }
 
                 return {
@@ -46,9 +49,17 @@ export function AnimatedText({Text, componentType, charDelay, AnimateGradient}) 
 
     return (
         <Box>
-            <Typography className='rotateBgGradient' variant={componentType}>
-                {state.currentText}
-            </Typography>
+            <Box
+                display={"inline"}
+            >
+                <Typography 
+                    className={gradientStyle} 
+                    variant={componentType}
+                >
+                    {state.currentText}
+                    { finished && (endAdornment) }
+                </Typography>
+            </Box>
         </Box>
     )
 }

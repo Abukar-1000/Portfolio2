@@ -6,7 +6,7 @@ import { DynamicContainer } from './Containers';
 
 export function AcademicInfo({}) {
 
-    const maxColumnsAllocated = 12;
+    const maxColumnsAllocated = 10;
     const allotedColumnsForASkill = 4;
     const GPA = 3.88;
 
@@ -14,7 +14,7 @@ export function AcademicInfo({}) {
         <DynamicContainer
         spacing={{sm: 1, md: 1}}
         columns={{xm: maxColumnsAllocated, sm: maxColumnsAllocated, md: maxColumnsAllocated, lg: maxColumnsAllocated}}
-        breakpoints={{xm: maxColumnsAllocated, sm: maxColumnsAllocated, md: 3, lg: allotedColumnsForASkill}}
+        breakpoints={{xm: maxColumnsAllocated, sm: maxColumnsAllocated, md: 6, lg: allotedColumnsForASkill}}
         >
             <Skills />
 

@@ -14,7 +14,15 @@ export function DynamicContainer({spacing, columns, breakpoints, children}) {
             >
                 {
                     children.map(child => {
-                        return <Grid item xs={breakpoints.xs} sm = {breakpoints.sm} md = {breakpoints.md} lg={breakpoints.lg} >{child}</Grid>
+                        return <Grid item xs={breakpoints.xs} sm = {breakpoints.sm} md = {breakpoints.md} lg={breakpoints.lg} >
+                            <Box
+                                display={"flex"}
+                                justifyContent={"center"}
+                                alignContent={"center"}
+                            >
+                                {child}
+                            </Box>
+                        </Grid>
                     })
                 }
             </Grid>
