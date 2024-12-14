@@ -11,7 +11,7 @@ export function JobSection(){
           ImgSrc: "AlFajirLogo.png",
           JobTitle: "Software Engineer",
           IsCurrent: false,
-          DateRange: "Nov 2022 – Dec 2023",
+          DateRange: "Nov '22–Dec '23",
           Company: "Al-Fajir",
           Location: "Indianapolis, Indiana"
         },
@@ -19,7 +19,7 @@ export function JobSection(){
           ImgSrc: "IULogo.png",
           JobTitle: "Software Engineer",
           IsCurrent: false,
-          DateRange: "Dec 2023 – Aug 2024",
+          DateRange: "Dec '23–Aug '24",
           Company: "IU Bloomington",
           Location: "Remote"
         },
@@ -64,13 +64,13 @@ export function JobSection(){
                 paddingTop={isMobile? "0.5rem": "none"}
             >
                 <JobCard 
-                key={i} 
-                JobTitle={jobs.JobTitle} 
-                isCurrent={jobs.IsCurrent} 
-                ImgSrc={jobs.ImgSrc}
-                DateRange={jobs.DateRange}
-                Company={jobs.Company}  
-                Location={jobs.Location}  
+                  key={i} 
+                  JobTitle={jobs.JobTitle} 
+                  isCurrent={jobs.IsCurrent} 
+                  ImgSrc={jobs.ImgSrc}
+                  DateRange={jobs.DateRange}
+                  Company={jobs.Company}  
+                  Location={jobs.Location}  
                 />
             </Grid>
         ))}

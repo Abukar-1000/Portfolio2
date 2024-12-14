@@ -4,7 +4,6 @@ import TerminalRoundedIcon from '@mui/icons-material/TerminalRounded';
 import WebhookRoundedIcon from '@mui/icons-material/WebhookRounded';
 import ManageAccountsRoundedIcon from '@mui/icons-material/ManageAccountsRounded';
 import DeveloperBoardRoundedIcon from '@mui/icons-material/DeveloperBoardRounded';
-import WysiwygRoundedIcon from '@mui/icons-material/WysiwygRounded';
 import ViewQuiltRoundedIcon from '@mui/icons-material/ViewQuiltRounded';
 import AccountTreeRoundedIcon from '@mui/icons-material/AccountTreeRounded';
 import DnsRoundedIcon from '@mui/icons-material/DnsRounded';
@@ -41,7 +40,7 @@ const skillMap = [
                 fontSize='large'
                 color="secondary"
             />,
-        fullText: "Software Engineering"
+        fullText: "Software ‌‌ Engineering"
     },
 
     {
@@ -59,7 +58,16 @@ const skillMap = [
                 fontSize='large'
                 color="secondary"
             />,
-        fullText: "Software Architecture"
+        fullText: "Computer Architecture"
+    },
+
+    {
+        abbreviation: "OS",
+        icon: <SettingsSystemDaydreamRoundedIcon
+                fontSize='large'
+                color="secondary"
+            />,
+        fullText: "Opperating Systems"
     },
 
     {
@@ -90,17 +98,8 @@ const skillMap = [
     },
 
     {
-        abbreviation: "OS",
-        icon: <SettingsSystemDaydreamRoundedIcon
-                fontSize='large'
-                color="secondary"
-            />,
-        fullText: "Opperating Systems"
-    },
-
-    {
         abbreviation: "DS",
-        icon: <SettingsSystemDaydreamRoundedIcon
+        icon: <PieChartOutlineRoundedIcon
                 fontSize='large'
                 color="secondary"
             />,

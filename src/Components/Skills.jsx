@@ -18,7 +18,7 @@ export function Skill({abbreviation, src, fullText, dimensions, icon=undefined})
                 xs: "7.5dvh",
                 md: "6.5dvh",
                 lg: "7dvh"
-            }
+            },
         }}>
             <Box 
                 sx={{
@@ -60,7 +60,13 @@ export function Skills({children}) {
     const allotedColumnsForASkill = 3;
     const maxColumnsAllocated = 10;
     return (
-        <Paper elevation={6} sx={{backgroundColor: '#fff', maxWidth: "fit-content"}}>
+        <Paper elevation={6} sx={{
+            backgroundColor: '#fff', 
+            maxWidth: {
+                xs: "fit-content",
+                lg: "700px"
+            }
+        }}>
             <Typography pt={1} variant="h5">Skills</Typography>
                 <Box mt={2} pb={2} sx={{ width: '100%' }}>
                         <DynamicContainer
