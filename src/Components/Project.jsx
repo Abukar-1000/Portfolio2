@@ -10,7 +10,7 @@ import { red, pink, lime } from '@mui/material/colors';
 import { createTheme, alpha, getContrastRatio } from '@mui/material/styles';
 import { ThemeProvider } from "@emotion/react";
 
-export function Project({ myTitle, action }) {
+export function Project({ myTitle, action, description = undefined }) {
 
     let [state, setState] = useState({
         elevation: 4
@@ -72,10 +72,17 @@ export function Project({ myTitle, action }) {
                             <Typography gutterBottom variant="h5" component="div" color={"white"}>
                                 {myTitle}
                             </Typography>
-                            <Typography variant="body2" color="#f3e5f5">
-                                Lizards are a widespread group of squamate reptiles, with over 6,000
-                                species, ranging across all continents except Antarctica
-                            </Typography>
+                            {
+                                (description)? 
+                                    <Typography variant="body2" color="#f3e5f5">
+                                        {description}
+                                    </Typography>
+                                :
+                                    <Typography variant="body2" color="#f3e5f5">
+                                        Lizards are a widespread group of squamate reptiles, with over 6,000
+                                        species, ranging across all continents except Antarctica
+                                    </Typography>
+                            }
                         </CardContent>
                     </CardActionArea>
                         <CardActions>

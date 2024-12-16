@@ -1,18 +1,89 @@
 import { Project } from './Components/Project';
 import { ProjectContainer } from './Components/Containers';
 
+
+const data = [
+    {
+        key: 0,
+        field:"Computer Vision",
+        projects: [
+            {
+                title: "Image Segmentation",
+                description: "Precisely segment your images by uncovering intensity patterns and transforming data into clear, actionable visuals."
+            },
+            {
+                title: "Connected Components",
+                description: "Group and identify connected regions in your images for seamless object counting and pattern recognition."
+            },
+            {
+                title: "Geo-Feature Computation",
+                description: "Extract geometric insights like area, perimeter, and centroids to power advanced image analysis."
+            },
+            {
+                title: "Corner Detection",
+                description: "Spot crucial features and edges in images with unmatched accuracy for smarter visual analysis."
+            },
+            {
+                title: "Edge Detection",
+                description: "Highlight sharp transitions and boundaries in images for smarter object recognition and motion tracking."
+            },
+            {
+                title: "Histogram Equalization",
+                description: "Enhance contrast and clarity in your images with advanced histogram equalization techniques"
+            },
+        ]
+
+    },
+    {
+        key: 2,
+        field:"Machine Learning",
+        projects: []
+    },
+    {
+        key: 3,
+        field:"Full Stack Development",
+        projects: []
+    },
+    {
+        key: 3,
+        field:"Back End Development",
+        projects: []
+    },
+    {
+        key: 4,
+        field:"Security",
+        projects: []
+    },
+    {
+        key: 5,
+        field:"Data Science",
+        projects: []
+    },
+]
+
+const placeHolder = [1,2,3,4,5,6].map((key) => (
+    <Project
+        key={key} 
+        myTitle = {"Liscence Plate Bluring"} 
+        action={"view"} />
+))
+
 export const allProjectData = [
     {
         key: 0,
         field:"Computer Vision",
         projects: <>
         <ProjectContainer>
-            <Project myTitle = {"Image Segmentation"} action={"view"}/>
-            <Project myTitle = {"Connected Components"} action={"view"} />
-            <Project myTitle = {"Geo-Feature Computation"} action={"view"} />
-            <Project myTitle = {"Corner Detection"} action={"view"} />
-            <Project myTitle = {"Edge Detection"} action={"view"} />
-            <Project myTitle = {"Histogram Equalization"} action={"view"} />
+            {
+                data[0].projects.map((p, i) => (
+                    <Project
+                        key={i}
+                        myTitle={p.title}
+                        description={p.description}
+                        action="view"
+                    />
+                ))
+            }
         </ProjectContainer>
         </>
     },
@@ -21,14 +92,7 @@ export const allProjectData = [
         field:"Machine Learning",
         projects: <>
         <ProjectContainer>
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
+            {placeHolder}
         </ProjectContainer>
         </>
     },
@@ -37,10 +101,7 @@ export const allProjectData = [
         field:"Full Stack Development",
         projects: <>
         <ProjectContainer>
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
+            {placeHolder}
         </ProjectContainer>
         </>
     },
@@ -49,11 +110,7 @@ export const allProjectData = [
         field:"Back End Development",
         projects: <>
         <ProjectContainer>
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
+            {placeHolder}
         </ProjectContainer>
         </>
     },
@@ -62,10 +119,7 @@ export const allProjectData = [
         field:"Security",
         projects: <>
         <ProjectContainer>
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
+            {placeHolder}
         </ProjectContainer>
         </>
     },
@@ -74,12 +128,7 @@ export const allProjectData = [
         field:"Data Science",
         projects: <>
         <ProjectContainer>
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
-            <Project myTitle = {"Liscence Plate Bluring"} action={"view"} />
+            {placeHolder}
         </ProjectContainer>
         </>
     },
