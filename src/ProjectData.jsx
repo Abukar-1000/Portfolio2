@@ -35,6 +35,33 @@ const data = [
 
     },
     {
+        key: 12,
+        field:"Networking",
+        projects: [
+            {
+                title: "Socket File Transfer",
+                description: `
+                    This project demonstrates how computers communicate to transfer files over a network using sockets, the backbone of internet communication.
+                `
+            },
+            {
+                title: "Enhanced Client Communication",
+                description: "This project enables real-time messaging and reliable file sharing between multiple clients using a hybrid UDP and TCP protocol architecture for seamless communication."
+            },
+            {
+                title: "Hybrid P2P Network",
+                description: "This project combines centralized organization with decentralized resilience, enabling efficient client interactions, resource sharing, and real-time communication in a flexible peer-to-peer network."
+            },
+            {
+                title: "Hybrid Resource Network",
+                description: `
+                This project integrates centralized directories with decentralized peer-to-peer communication to enable seamless resource sharing, 
+                fault tolerance, and scalable file transfers using advanced networking techniques.
+                `
+            }
+        ]
+    },
+    {
         key: 2,
         field:"Machine Learning",
         projects: []
@@ -68,6 +95,7 @@ const placeHolder = [1,2,3,4,5,6].map((key) => (
         action={"view"} />
 ))
 
+
 export const allProjectData = [
     {
         key: 0,
@@ -89,6 +117,24 @@ export const allProjectData = [
     },
     {
         key: 1,
+        field:"Networking",
+        projects: <>
+        <ProjectContainer>
+            {
+                data[1].projects.map((p, i) => (
+                    <Project
+                        key={i}
+                        myTitle={p.title}
+                        description={p.description}
+                        action="view"
+                    />
+                ))
+            }
+        </ProjectContainer>
+        </>
+    },
+    {
+        key: 2,
         field:"Machine Learning",
         projects: <>
         <ProjectContainer>
@@ -97,7 +143,7 @@ export const allProjectData = [
         </>
     },
     {
-        key: 2,
+        key: 3,
         field:"Full Stack Development",
         projects: <>
         <ProjectContainer>
@@ -106,7 +152,7 @@ export const allProjectData = [
         </>
     },
     {
-        key: 3,
+        key: 4,
         field:"Back End Development",
         projects: <>
         <ProjectContainer>
@@ -115,7 +161,7 @@ export const allProjectData = [
         </>
     },
     {
-        key: 4,
+        key: 5,
         field:"Security",
         projects: <>
         <ProjectContainer>
@@ -124,7 +170,7 @@ export const allProjectData = [
         </>
     },
     {
-        key: 5,
+        key: 6,
         field:"Data Science",
         projects: <>
         <ProjectContainer>
