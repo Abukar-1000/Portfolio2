@@ -12,9 +12,14 @@ export default function useScript(src, targetElementClass){
         try {
             const scriptElement = document.createElement("script");
             const parentElement = document.querySelector(targetElementClass);
-            scriptElement.src = src;
-            scriptElement.async = true;
-            parentElement.appendChild(scriptElement);
+
+            if (scriptElement.src !== src && src) {
+                scriptElement.src = src;
+                scriptElement.async = true;
+                parentElement.appendChild(scriptElement);
+                // scriptElement.childNodes = [scriptElement]
+            }
+
 
             return () => {
                 parentElement.removeChild(scriptElement);
